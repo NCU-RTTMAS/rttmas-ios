@@ -1,0 +1,1942 @@
+diff --git a/rttmas-ios.xcodeproj/project.pbxproj b/rttmas-ios.xcodeproj/project.pbxproj
+index ae76e9c..e4031b9 100644
+--- a/rttmas-ios.xcodeproj/project.pbxproj
++++ b/rttmas-ios.xcodeproj/project.pbxproj
+@@ -7,6 +7,7 @@
+ 	objects = {
+ 
+ /* Begin PBXBuildFile section */
++		3914AA192D73A8780074F5AE /* ic_launcher.png in Resources */ = {isa = PBXBuildFile; fileRef = 3914AA182D73A8780074F5AE /* ic_launcher.png */; };
+ 		392689892D709D22002E245B /* ModelManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392689882D709D1E002E245B /* ModelManager.swift */; };
+ 		3926898B2D709D8F002E245B /* DetectionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3926898A2D709D8B002E245B /* DetectionManager.swift */; };
+ 		3926898D2D709DB0002E245B /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3926898C2D709DAC002E245B /* Utilities.swift */; };
+@@ -37,6 +38,7 @@
+ /* End PBXBuildFile section */
+ 
+ /* Begin PBXFileReference section */
++		3914AA182D73A8780074F5AE /* ic_launcher.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_launcher.png; sourceTree = "<group>"; };
+ 		392689882D709D1E002E245B /* ModelManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelManager.swift; sourceTree = "<group>"; };
+ 		3926898A2D709D8B002E245B /* DetectionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetectionManager.swift; sourceTree = "<group>"; };
+ 		3926898C2D709DAC002E245B /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+@@ -65,7 +67,7 @@
+ 		73E3C7FB2CE3AF1A00E2D85C /* yolo11n.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = yolo11n.mlpackage; sourceTree = "<group>"; };
+ 		73E3C7FC2CE3AF1A00E2D85C /* yolo11s.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = yolo11s.mlpackage; sourceTree = "<group>"; };
+ 		73E3C7FD2CE3AF1A00E2D85C /* yolo11x.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = yolo11x.mlpackage; sourceTree = "<group>"; };
+-		7BCB411721C3096100BFC4D0 /* RTTMAS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RTTMAS.app; sourceTree = BUILT_PRODUCTS_DIR; };
++		7BCB411721C3096100BFC4D0 /* rttmas-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "rttmas-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+ 		8EDAA633C1F2B50286D16008 /* BoundingBoxView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoundingBoxView.swift; sourceTree = "<group>"; };
+ 		8EDAAA4507D2D23D7FAB827F /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+ /* End PBXFileReference section */
+@@ -91,7 +93,7 @@
+ 			path = Utilities;
+ 			sourceTree = "<group>";
+ 		};
+-		636EFC9B21E62DD300DE43BC /* YOLO */ = {
++		636EFC9B21E62DD300DE43BC /* rttmas */ = {
+ 			isa = PBXGroup;
+ 			children = (
+ 				3926898C2D709DAC002E245B /* Utilities.swift */,
+@@ -109,9 +111,10 @@
+ 				633BC6FA22EDE73D00821BCA /* Settings.bundle */,
+ 				632892DF22EB3DB100A12D9C /* Info.plist */,
+ 				636EFCB821E62E3900DE43BC /* Assets.xcassets */,
++				3914AA182D73A8780074F5AE /* ic_launcher.png */,
+ 				6323C45122186177008AE681 /* ultralytics_yolo_logotype.png */,
+ 			);
+-			path = YOLO;
++			path = rttmas;
+ 			sourceTree = "<group>";
+ 		};
+ 		63A946D8271800E20001C3ED /* Models */ = {
+@@ -136,7 +139,7 @@
+ 			isa = PBXGroup;
+ 			children = (
+ 				8EDAAA4507D2D23D7FAB827F /* README.md */,
+-				636EFC9B21E62DD300DE43BC /* YOLO */,
++				636EFC9B21E62DD300DE43BC /* rttmas */,
+ 				63B8B0A821E62A890026FBC3 /* .gitignore */,
+ 				7BCB411821C3096100BFC4D0 /* Products */,
+ 			);
+@@ -145,7 +148,7 @@
+ 		7BCB411821C3096100BFC4D0 /* Products */ = {
+ 			isa = PBXGroup;
+ 			children = (
+-				7BCB411721C3096100BFC4D0 /* RTTMAS.app */,
++				7BCB411721C3096100BFC4D0 /* rttmas-ios.app */,
+ 			);
+ 			name = Products;
+ 			sourceTree = "<group>";
+@@ -153,9 +156,9 @@
+ /* End PBXGroup section */
+ 
+ /* Begin PBXNativeTarget section */
+-		7BCB411621C3096100BFC4D0 /* RTTMAS */ = {
++		7BCB411621C3096100BFC4D0 /* rttmas-ios */ = {
+ 			isa = PBXNativeTarget;
+-			buildConfigurationList = 7BCB412921C3096200BFC4D0 /* Build configuration list for PBXNativeTarget "RTTMAS" */;
++			buildConfigurationList = 7BCB412921C3096200BFC4D0 /* Build configuration list for PBXNativeTarget "rttmas-ios" */;
+ 			buildPhases = (
+ 				63F890A422A1723300072C38 /* ShellScript */,
+ 				7BCB411321C3096100BFC4D0 /* Sources */,
+@@ -166,9 +169,9 @@
+ 			);
+ 			dependencies = (
+ 			);
+-			name = RTTMAS;
++			name = "rttmas-ios";
+ 			productName = YOLO;
+-			productReference = 7BCB411721C3096100BFC4D0 /* RTTMAS.app */;
++			productReference = 7BCB411721C3096100BFC4D0 /* rttmas-ios.app */;
+ 			productType = "com.apple.product-type.application";
+ 		};
+ /* End PBXNativeTarget section */
+@@ -187,7 +190,7 @@
+ 					};
+ 				};
+ 			};
+-			buildConfigurationList = 7BCB411221C3096100BFC4D0 /* Build configuration list for PBXProject "RTTMAS" */;
++			buildConfigurationList = 7BCB411221C3096100BFC4D0 /* Build configuration list for PBXProject "rttmas-ios" */;
+ 			compatibilityVersion = "Xcode 9.3";
+ 			developmentRegion = en;
+ 			hasScannedForEncodings = 0;
+@@ -200,7 +203,7 @@
+ 			projectDirPath = "";
+ 			projectRoot = "";
+ 			targets = (
+-				7BCB411621C3096100BFC4D0 /* RTTMAS */,
++				7BCB411621C3096100BFC4D0 /* rttmas-ios */,
+ 			);
+ 		};
+ /* End PBXProject section */
+@@ -211,6 +214,7 @@
+ 			buildActionMask = 2147483647;
+ 			files = (
+ 				636EFCB921E62E3900DE43BC /* Assets.xcassets in Resources */,
++				3914AA192D73A8780074F5AE /* ic_launcher.png in Resources */,
+ 				63CF37202514455300E2DEA1 /* Main.storyboard in Resources */,
+ 				63CF37212514455300E2DEA1 /* ultralytics_yolo_logotype.png in Resources */,
+ 				63CF371F2514455300E2DEA1 /* LaunchScreen.storyboard in Resources */,
+@@ -224,7 +228,7 @@
+ 		63F890A422A1723300072C38 /* ShellScript */ = {
+ 			isa = PBXShellScriptBuildPhase;
+ 			alwaysOutOfDate = 1;
+-			buildActionMask = 2147483647;
++			buildActionMask = 8;
+ 			files = (
+ 			);
+ 			inputFileListPaths = (
+@@ -235,7 +239,7 @@
+ 			);
+ 			outputPaths = (
+ 			);
+-			runOnlyForDeploymentPostprocessing = 0;
++			runOnlyForDeploymentPostprocessing = 1;
+ 			shellPath = /bin/sh;
+ 			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nbuildNumber=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\")\nbuildNumber=$(($buildNumber + 1))\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\"\n";
+ 		};
+@@ -326,6 +330,7 @@
+ 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+ 				GCC_WARN_UNUSED_FUNCTION = YES;
+ 				GCC_WARN_UNUSED_VARIABLE = YES;
++				INFOPLIST_FILE = rttmas/Info.plist;
+ 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+ 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+ 				MTL_FAST_MATH = YES;
+@@ -382,6 +387,7 @@
+ 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+ 				GCC_WARN_UNUSED_FUNCTION = YES;
+ 				GCC_WARN_UNUSED_VARIABLE = YES;
++				INFOPLIST_FILE = rttmas/Info.plist;
+ 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+ 				MTL_ENABLE_DEBUG_INFO = NO;
+ 				MTL_FAST_MATH = YES;
+@@ -400,7 +406,7 @@
+ 				CODE_SIGN_STYLE = Automatic;
+ 				CURRENT_PROJECT_VERSION = 0;
+ 				DEVELOPMENT_TEAM = 82UT5CPGZ4;
+-				INFOPLIST_FILE = YOLO/Info.plist;
++				INFOPLIST_FILE = rttmas/Info.plist;
+ 				INFOPLIST_KEY_CFBundleDisplayName = "RTTMAS iOS";
+ 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.navigation";
+ 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+@@ -428,7 +434,7 @@
+ 				CODE_SIGN_STYLE = Automatic;
+ 				CURRENT_PROJECT_VERSION = 0;
+ 				DEVELOPMENT_TEAM = 82UT5CPGZ4;
+-				INFOPLIST_FILE = YOLO/Info.plist;
++				INFOPLIST_FILE = rttmas/Info.plist;
+ 				INFOPLIST_KEY_CFBundleDisplayName = "RTTMAS iOS";
+ 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.navigation";
+ 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+@@ -451,7 +457,7 @@
+ /* End XCBuildConfiguration section */
+ 
+ /* Begin XCConfigurationList section */
+-		7BCB411221C3096100BFC4D0 /* Build configuration list for PBXProject "RTTMAS" */ = {
++		7BCB411221C3096100BFC4D0 /* Build configuration list for PBXProject "rttmas-ios" */ = {
+ 			isa = XCConfigurationList;
+ 			buildConfigurations = (
+ 				7BCB412721C3096200BFC4D0 /* Debug */,
+@@ -460,7 +466,7 @@
+ 			defaultConfigurationIsVisible = 0;
+ 			defaultConfigurationName = Release;
+ 		};
+-		7BCB412921C3096200BFC4D0 /* Build configuration list for PBXNativeTarget "RTTMAS" */ = {
++		7BCB412921C3096200BFC4D0 /* Build configuration list for PBXNativeTarget "rttmas-ios" */ = {
+ 			isa = XCConfigurationList;
+ 			buildConfigurations = (
+ 				7BCB412A21C3096200BFC4D0 /* Debug */,
+diff --git a/rttmas-ios.xcodeproj/xcshareddata/xcschemes/YOLO.xcscheme b/rttmas-ios.xcodeproj/xcshareddata/xcschemes/YOLO.xcscheme
+index 089ff80..b547b32 100644
+--- a/rttmas-ios.xcodeproj/xcshareddata/xcschemes/YOLO.xcscheme
++++ b/rttmas-ios.xcodeproj/xcshareddata/xcschemes/YOLO.xcscheme
+@@ -16,9 +16,9 @@
+             <BuildableReference
+                BuildableIdentifier = "primary"
+                BlueprintIdentifier = "7BCB411621C3096100BFC4D0"
+-               BuildableName = "RTTMAS.app"
+-               BlueprintName = "RTTMAS"
+-               ReferencedContainer = "container:RTTMAS.xcodeproj">
++               BuildableName = "rttmas-ios.app"
++               BlueprintName = "rttmas-ios"
++               ReferencedContainer = "container:rttmas-ios.xcodeproj">
+             </BuildableReference>
+          </BuildActionEntry>
+       </BuildActionEntries>
+@@ -45,9 +45,9 @@
+          <BuildableReference
+             BuildableIdentifier = "primary"
+             BlueprintIdentifier = "7BCB411621C3096100BFC4D0"
+-            BuildableName = "RTTMAS.app"
+-            BlueprintName = "RTTMAS"
+-            ReferencedContainer = "container:RTTMAS.xcodeproj">
++            BuildableName = "rttmas-ios.app"
++            BlueprintName = "rttmas-ios"
++            ReferencedContainer = "container:rttmas-ios.xcodeproj">
+          </BuildableReference>
+       </BuildableProductRunnable>
+    </LaunchAction>
+@@ -62,9 +62,9 @@
+          <BuildableReference
+             BuildableIdentifier = "primary"
+             BlueprintIdentifier = "7BCB411621C3096100BFC4D0"
+-            BuildableName = "RTTMAS.app"
+-            BlueprintName = "RTTMAS"
+-            ReferencedContainer = "container:RTTMAS.xcodeproj">
++            BuildableName = "rttmas-ios.app"
++            BlueprintName = "rttmas-ios"
++            ReferencedContainer = "container:rttmas-ios.xcodeproj">
+          </BuildableReference>
+       </BuildableProductRunnable>
+    </ProfileAction>
+diff --git a/rttmas/DetectionManager.swift b/rttmas/DetectionManager.swift
+index d1b524d..b44a309 100644
+--- a/rttmas/DetectionManager.swift
++++ b/rttmas/DetectionManager.swift
+@@ -14,7 +14,7 @@ class DetectionManager {
+         // Check if 3 seconds have passed since the last detection
+         let currentTime = Date()
+         let timeSinceLastDetection = currentTime.timeIntervalSince(lastDetectionTime)
+-        guard timeSinceLastDetection >= 1.0 else {
++        guard timeSinceLastDetection >= 1 else {
+ //            print("DetectionManager: Skipping detection - \(timeSinceLastDetection) seconds since last detection")
+             viewController?.currentBuffer = nil  // Clear buffer to avoid reprocessing
+             return
+@@ -85,7 +85,7 @@ class DetectionManager {
+             guard let viewController = self.viewController,
+                   let results = request.results as? [VNRecognizedObjectObservation] else {
+                 print("DetectionManager: No car detection results")
+-//                self.viewController!.show(predictions: [], frame: self.viewController!.latestFrame)
++                self.viewController!.show(predictions: [], frame: self.viewController!.latestFrame)
+                 return
+             }
+             let carPredictions = results.filter { ["car", "truck", "motorcycle", "bus"].contains($0.labels[0].identifier.lowercased()) && $0.confidence > 0.8 }
+diff --git a/rttmas/LaunchScreen.storyboard b/rttmas/LaunchScreen.storyboard
+index c4280f4..ac0416f 100755
+--- a/rttmas/LaunchScreen.storyboard
++++ b/rttmas/LaunchScreen.storyboard
+@@ -1,9 +1,9 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
++<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+     <device id="retina5_9" orientation="portrait" appearance="light"/>
+     <dependencies>
+         <deployment identifier="iOS"/>
+-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
++        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
+         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+     </dependencies>
+     <scenes>
+@@ -19,8 +19,127 @@
+                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                         <subviews>
+-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ultralytics_yolo_logotype.png" translatesAutoresizingMaskIntoConstraints="NO" id="CPK-0W-BZj">
+-                                <rect key="frame" x="19" y="156" width="336" height="500"/>
++                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RLq-PK-PIJ">
++                                <rect key="frame" x="121" y="391" width="246" height="67"/>
++                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
++                                <attributedString key="attributedText">
++                                    <fragment content="R">
++                                        <attributes>
++                                            <color key="NSColor" red="0.31186631320000002" green="0.49929761890000002" blue="0.47181248660000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
++                                            <font key="NSFont" size="17" name="Helvetica-Bold"/>
++                                            <font key="NSOriginalFont" size="17" name="Helvetica-Bold"/>
++                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
++                                        </attributes>
++                                    </fragment>
++                                    <fragment content="eal-">
++                                        <attributes>
++                                            <color key="NSColor" red="0.31186631320000002" green="0.49929761890000002" blue="0.47181248660000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
++                                            <font key="NSFont" size="17" name="Helvetica"/>
++                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
++                                        </attributes>
++                                    </fragment>
++                                    <fragment content="T">
++                                        <attributes>
++                                            <color key="NSColor" red="0.31186631320000002" green="0.49929761890000002" blue="0.47181248660000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
++                                            <font key="NSFont" size="17" name="Helvetica-Bold"/>
++                                            <font key="NSOriginalFont" size="17" name="Helvetica-Bold"/>
++                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
++                                        </attributes>
++                                    </fragment>
++                                    <fragment content="ime ">
++                                        <attributes>
++                                            <color key="NSColor" red="0.31186631320000002" green="0.49929761890000002" blue="0.47181248660000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
++                                            <font key="NSFont" size="17" name="Helvetica"/>
++                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
++                                        </attributes>
++                                    </fragment>
++                                    <fragment content="T">
++                                        <attributes>
++                                            <color key="NSColor" red="0.31186631320000002" green="0.49929761890000002" blue="0.47181248660000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
++                                            <font key="NSFont" size="17" name="Helvetica-Bold"/>
++                                            <font key="NSOriginalFont" size="17" name="Helvetica-Bold"/>
++                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
++                                        </attributes>
++                                    </fragment>
++                                    <fragment content="raffic ">
++                                        <attributes>
++                                            <color key="NSColor" red="0.31186631320000002" green="0.49929761890000002" blue="0.47181248660000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
++                                            <font key="NSFont" size="17" name="Helvetica"/>
++                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
++                                        </attributes>
++                                    </fragment>
++                                    <fragment content="M">
++                                        <attributes>
++                                            <color key="NSColor" red="0.31186631320000002" green="0.49929761890000002" blue="0.47181248660000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
++                                            <font key="NSFont" size="17" name="Helvetica-Bold"/>
++                                            <font key="NSOriginalFont" size="17" name="Helvetica-Bold"/>
++                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
++                                        </attributes>
++                                    </fragment>
++                                    <fragment content="onitoring and ">
++                                        <attributes>
++                                            <color key="NSColor" red="0.31186631320000002" green="0.49929761890000002" blue="0.47181248660000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
++                                            <font key="NSFont" size="17" name="Helvetica"/>
++                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
++                                        </attributes>
++                                    </fragment>
++                                    <fragment content="A">
++                                        <attributes>
++                                            <color key="NSColor" red="0.31186631320000002" green="0.49929761890000002" blue="0.47181248660000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
++                                            <font key="NSFont" size="17" name="Helvetica-Bold"/>
++                                            <font key="NSOriginalFont" size="17" name="Helvetica-Bold"/>
++                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
++                                        </attributes>
++                                    </fragment>
++                                    <fragment content="larming ">
++                                        <attributes>
++                                            <color key="NSColor" red="0.31186631320000002" green="0.49929761890000002" blue="0.47181248660000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
++                                            <font key="NSFont" size="17" name="Helvetica"/>
++                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
++                                        </attributes>
++                                    </fragment>
++                                    <fragment content="S">
++                                        <attributes>
++                                            <color key="NSColor" red="0.31186631320000002" green="0.49929761890000002" blue="0.47181248660000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
++                                            <font key="NSFont" size="17" name="Helvetica-Bold"/>
++                                            <font key="NSOriginalFont" size="17" name="Helvetica-Bold"/>
++                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
++                                        </attributes>
++                                    </fragment>
++                                    <fragment content="ystem">
++                                        <attributes>
++                                            <color key="NSColor" red="0.31186631320000002" green="0.49929761890000002" blue="0.47181248660000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
++                                            <font key="NSFont" size="17" name="Helvetica"/>
++                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
++                                        </attributes>
++                                    </fragment>
++                                </attributedString>
++                                <nil key="highlightedColor"/>
++                            </label>
++                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="RTTMAS" textAlignment="justified" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PEe-kJ-IWK">
++                                <rect key="frame" x="121" y="365" width="149" height="39"/>
++                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
++                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="32"/>
++                                <color key="textColor" red="0.31186631320000002" green="0.49929761890000002" blue="0.47181248660000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
++                                <nil key="highlightedColor"/>
++                            </label>
++                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qEo-qz-0gr">
++                                <rect key="frame" x="227" y="449" width="132" height="21"/>
++                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
++                                <attributedString key="attributedText">
++                                    <fragment content="Presented By MWNL">
++                                        <attributes>
++                                            <color key="NSColor" red="0.31186631320000002" green="0.49929761890000002" blue="0.47181248660000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
++                                            <font key="NSFont" size="11" name="Helvetica"/>
++                                            <font key="NSOriginalFont" metaFont="system" size="17"/>
++                                            <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
++                                        </attributes>
++                                    </fragment>
++                                </attributedString>
++                                <nil key="highlightedColor"/>
++                            </label>
++                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_launcher.png" highlightedImage="ic_launcher.png" translatesAutoresizingMaskIntoConstraints="NO" id="CPK-0W-BZj">
++                                <rect key="frame" x="16" y="359" width="95" height="95"/>
+                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                             </imageView>
+                         </subviews>
+@@ -36,6 +155,6 @@
+         </scene>
+     </scenes>
+     <resources>
+-        <image name="ultralytics_yolo_logotype.png" width="1406" height="394"/>
++        <image name="ic_launcher.png" width="192" height="192"/>
+     </resources>
+ </document>
+diff --git a/rttmas/Main.storyboard b/rttmas/Main.storyboard
+index 7781e4a..b5e391c 100644
+--- a/rttmas/Main.storyboard
++++ b/rttmas/Main.storyboard
+@@ -12,7 +12,7 @@
+         <!--Cropped Images View Controller-->
+         <scene sceneID="c8Z-hG-RTm">
+             <objects>
+-                <viewController id="3HT-eu-8G3" customClass="CroppedImagesViewController" customModule="YOLO" customModuleProvider="target" sceneMemberID="viewController">
++                <viewController id="3HT-eu-8G3" customClass="CroppedImagesViewController" customModule="rttmas_ios" customModuleProvider="target" sceneMemberID="viewController">
+                     <view key="view" contentMode="scaleToFill" id="ofN-Z4-oct">
+                         <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
+                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+@@ -44,7 +44,7 @@
+         <!--View Controller-->
+         <scene sceneID="tne-QT-ifu">
+             <objects>
+-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="YOLO" customModuleProvider="target" sceneMemberID="viewController">
++                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="rttmas_ios" customModuleProvider="target" sceneMemberID="viewController">
+                     <view key="view" contentMode="scaleAspectFill" id="8bC-Xf-vdC">
+                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+@@ -97,7 +97,7 @@
+                                 <nil key="highlightedColor"/>
+                             </label>
+                             <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="Version 0.0 (0)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="OCe-bb-RWv" userLabel="version">
+-                                <rect key="frame" x="5" y="751" width="100" height="14"/>
++                                <rect key="frame" x="5" y="751" width="256" height="14"/>
+                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                 <accessibility key="accessibilityConfiguration">
+                                     <accessibilityTraits key="traits" staticText="YES" updatesFrequently="YES"/>
+@@ -109,13 +109,6 @@
+                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Focus" translatesAutoresizingMaskIntoConstraints="NO" id="q1Z-jK-UQS">
+                                 <rect key="frame" x="0.0" y="223.66666666666663" width="393" height="405"/>
+                             </imageView>
+-                            <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" image="ultralytics_yolo_logotype.png" id="EZE-r4-WFr">
+-                                <rect key="frame" x="215" y="555" width="159" height="67"/>
+-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
+-                                <accessibility key="accessibilityConfiguration">
+-                                    <accessibilityTraits key="traits" button="YES" link="YES" image="YES" allowsDirectInteraction="YES"/>
+-                                </accessibility>
+-                            </imageView>
+                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.25 Confidence Threshold" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yhe-73-Ryr" userLabel="LabelSliderConf">
+                                 <rect key="frame" x="6" y="624.66666666666663" width="186" height="18"/>
+                                 <accessibility key="accessibilityConfiguration">
+@@ -177,6 +170,7 @@
+                                     <constraint firstAttribute="height" constant="24" id="wAH-Ui-IPj"/>
+                                 </constraints>
+                                 <items>
++                                    <barButtonItem enabled="NO" systemItem="flexibleSpace" id="e5w-AD-guY"/>
+                                     <barButtonItem enabled="NO" width="20" systemItem="fixedSpace" id="Iws-X9-mpr"/>
+                                     <barButtonItem enabled="NO" springLoaded="YES" style="plain" systemItem="play" id="gHs-cs-nVf">
+                                         <connections>
+@@ -276,6 +270,27 @@
+                                 <color key="textColor" systemColor="groupTableViewBackgroundColor"/>
+                                 <nil key="highlightedColor"/>
+                             </label>
++                            <imageView opaque="NO" alpha="0.80000000000000004" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" image="ic_launcher.png" id="jMD-gl-NIX">
++                                <rect key="frame" x="180" y="540" width="80" height="80"/>
++                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
++                                <accessibility key="accessibilityConfiguration">
++                                    <accessibilityTraits key="traits" button="YES" link="YES" image="YES" allowsDirectInteraction="YES"/>
++                                </accessibility>
++                            </imageView>
++                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.80000000000000004" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5R7-D1-jKA">
++                                <rect key="frame" x="255" y="548" width="119" height="64"/>
++                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
++                                <attributedString key="attributedText">
++                                    <fragment content="MWNL RTTMAS">
++                                        <attributes>
++                                            <color key="NSColor" red="0.31186631320000002" green="0.49929761890000002" blue="0.47181248660000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
++                                            <font key="NSFont" size="26" name="Helvetica-Bold"/>
++                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
++                                        </attributes>
++                                    </fragment>
++                                </attributedString>
++                                <nil key="highlightedColor"/>
++                            </label>
+                         </subviews>
+                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+@@ -378,7 +393,7 @@
+     <resources>
+         <image name="Focus" width="414" height="414"/>
+         <image name="camera.rotate" catalog="system" width="128" height="93"/>
+-        <image name="ultralytics_yolo_logotype.png" width="1406" height="394"/>
++        <image name="ic_launcher.png" width="192" height="192"/>
+         <image name="video" catalog="system" width="128" height="82"/>
+         <systemColor name="groupTableViewBackgroundColor">
+             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+diff --git a/rttmas/ModelManager.swift b/rttmas/ModelManager.swift
+index dcca100..d170717 100644
+--- a/rttmas/ModelManager.swift
++++ b/rttmas/ModelManager.swift
+@@ -11,7 +11,6 @@ import Vision
+ class ModelManager {
+     weak var viewController: ViewController?
+     
+- 
+     var mlModel: MLModel
+     var licensePlateModel: MLModel
+     
+diff --git a/rttmas/Utilities/BoundingBoxView.swift b/rttmas/Utilities/BoundingBoxView.swift
+index add81aa..6c04803 100644
+--- a/rttmas/Utilities/BoundingBoxView.swift
++++ b/rttmas/Utilities/BoundingBoxView.swift
+@@ -1,80 +1,89 @@
+-//  Ultralytics YOLO 🚀 - AGPL-3.0 License
+-//
+-//  BoundingBoxView for Ultralytics YOLO App
+-//  This class is designed to visualize bounding boxes and labels for detected objects in the YOLOv8 models within the Ultralytics YOLO app.
+-//  It leverages Core Animation layers to draw the bounding boxes and text labels dynamically on the detection video feed.
+-//  Licensed under AGPL-3.0. For commercial use, refer to Ultralytics licensing: https://ultralytics.com/license
+-//  Access the source code: https://github.com/ultralytics/yolo-ios-app
+-//
+-//  BoundingBoxView facilitates the clear representation of detection results, improving user interaction with the app by
+-//  providing immediate visual feedback on detected objects, including their classification and confidence level.
+-
+ import Foundation
+ import UIKit
+ 
+ /// Manages the visualization of bounding boxes and associated labels for object detection results.
+ class BoundingBoxView {
+-  /// The layer that draws the bounding box around a detected object.
+-  let shapeLayer: CAShapeLayer
+-
+-  /// The layer that displays the label and confidence score for the detected object.
+-  let textLayer: CATextLayer
+-
+-  /// Initializes a new BoundingBoxView with configured shape and text layers.
+-  init() {
+-    shapeLayer = CAShapeLayer()
+-    shapeLayer.fillColor = UIColor.clear.cgColor  // No fill to only show the bounding outline
+-    shapeLayer.lineWidth = 4  // Set the stroke line width
+-    shapeLayer.isHidden = true  // Initially hidden; shown when a detection occurs
+-
+-    textLayer = CATextLayer()
+-    textLayer.isHidden = true  // Initially hidden; shown with label when a detection occurs
+-    textLayer.contentsScale = UIScreen.main.scale  // Ensure the text is sharp on retina displays
+-    textLayer.fontSize = 14  // Set font size for the label text
+-    textLayer.font = UIFont(name: "Avenir", size: textLayer.fontSize)  // Use Avenir font for labels
+-    textLayer.alignmentMode = .center  // Center-align the text within the layer
+-  }
+-
+-  /// Adds the bounding box and text layers to a specified parent layer.
+-  /// - Parameter parent: The CALayer to which the bounding box and text layers will be added.
+-  func addToLayer(_ parent: CALayer) {
+-    parent.addSublayer(shapeLayer)
+-    parent.addSublayer(textLayer)
+-  }
+-
+-  /// Updates the bounding box and label to be visible with specified properties.
+-  /// - Parameters:
+-  ///   - frame: The CGRect frame defining the bounding box's size and position.
+-  ///   - label: The text label to display (e.g., object class and confidence).
+-  ///   - color: The color of the bounding box stroke and label background.
+-  ///   - alpha: The opacity level for the bounding box stroke and label background.
+-  func show(frame: CGRect, label: String, color: UIColor, alpha: CGFloat) {
+-    CATransaction.setDisableActions(true)  // Disable implicit animations
+-
+-    let path = UIBezierPath(roundedRect: frame, cornerRadius: 6.0)  // Rounded rectangle for the bounding box
+-    shapeLayer.path = path.cgPath
+-    shapeLayer.strokeColor = color.withAlphaComponent(alpha).cgColor  // Apply color and alpha to the stroke
+-    shapeLayer.isHidden = false  // Make the shape layer visible
+-
+-    textLayer.string = label  // Set the label text
+-    textLayer.backgroundColor = color.withAlphaComponent(alpha).cgColor  // Apply color and alpha to the background
+-    textLayer.isHidden = false  // Make the text layer visible
+-    textLayer.foregroundColor = UIColor.white.withAlphaComponent(alpha).cgColor  // Set text color
+-
+-    // Calculate the text size and position based on the label content
+-    let attributes = [NSAttributedString.Key.font: textLayer.font as Any]
+-    let textRect = label.boundingRect(
+-      with: CGSize(width: 400, height: 100),
+-      options: .truncatesLastVisibleLine,
+-      attributes: attributes, context: nil)
+-    let textSize = CGSize(width: textRect.width + 12, height: textRect.height)  // Add padding to the text size
+-    let textOrigin = CGPoint(x: frame.origin.x - 2, y: frame.origin.y - textSize.height - 2)  // Position above the bounding box
+-    textLayer.frame = CGRect(origin: textOrigin, size: textSize)  // Set the text layer frame
+-  }
+-
+-  /// Hides the bounding box and text layers.
+-  func hide() {
+-    shapeLayer.isHidden = true
+-    textLayer.isHidden = true
+-  }
++    /// The layer that draws the bounding box around a detected object.
++    let shapeLayer: CAShapeLayer
++    
++    /// The layer that displays the label and confidence score for the detected object.
++    let textLayer: CATextLayer
++    
++    /// Timer to control visibility duration
++    private var hideTimer: Timer?
++    
++    /// Initializes a new BoundingBoxView with configured shape and text layers.
++    init() {
++        shapeLayer = CAShapeLayer()
++        shapeLayer.fillColor = UIColor.clear.cgColor
++        shapeLayer.lineWidth = 4
++        shapeLayer.isHidden = true
++        
++        textLayer = CATextLayer()
++        textLayer.isHidden = true
++        textLayer.contentsScale = UIScreen.main.scale
++        textLayer.fontSize = 14
++        textLayer.font = UIFont(name: "Avenir", size: textLayer.fontSize)
++        textLayer.alignmentMode = .center
++    }
++    
++    /// Adds the bounding box and text layers to a specified parent layer.
++    /// - Parameter parent: The CALayer to which the bounding box and text layers will be added.
++    func addToLayer(_ parent: CALayer) {
++        parent.addSublayer(shapeLayer)
++        parent.addSublayer(textLayer)
++        print("BoundingBoxView: Added to layer \(parent)")
++    }
++    
++    /// Updates the bounding box and label to be visible for 3 seconds with specified properties.
++    /// - Parameters:
++    ///   - frame: The CGRect frame defining the bounding box's size and position.
++    ///   - label: The text label to display (e.g., object class and confidence).
++    ///   - color: The color of the bounding box stroke and label background.
++    ///   - alpha: The opacity level for the bounding box stroke and label background.
++    func show(frame: CGRect, label: String, color: UIColor, alpha: CGFloat) {
++        print("BoundingBoxView: Showing frame \(frame), label \(label), color \(color), alpha \(alpha)")
++        CATransaction.setDisableActions(true)
++        
++        let path = UIBezierPath(roundedRect: frame, cornerRadius: 6.0)
++        shapeLayer.path = path.cgPath
++        shapeLayer.strokeColor = color.withAlphaComponent(alpha).cgColor
++        shapeLayer.isHidden = false
++        
++        textLayer.string = label
++        textLayer.backgroundColor = color.withAlphaComponent(alpha).cgColor
++        textLayer.isHidden = false
++        textLayer.foregroundColor = UIColor.white.withAlphaComponent(alpha).cgColor
++        
++        let attributes = [NSAttributedString.Key.font: textLayer.font as Any]
++        let textRect = label.boundingRect(
++            with: CGSize(width: 400, height: 100),
++            options: .truncatesLastVisibleLine,
++            attributes: attributes, context: nil)
++        let textSize = CGSize(width: textRect.width + 12, height: textRect.height)
++        let textOrigin = CGPoint(x: frame.origin.x - 2, y: frame.origin.y - textSize.height - 2)
++        textLayer.frame = CGRect(origin: textOrigin, size: textSize)
++        
++        // Validate frame bounds
++        if frame.width <= 0 || frame.height <= 0 || frame.origin.x < 0 || frame.origin.y < 0 {
++            print("BoundingBoxView: Warning - Invalid frame dimensions or position: \(frame)")
++        }
++        
++        // Cancel any existing hide timer
++//        hideTimer?.invalidate()
++//        
++//        // Schedule hide after 3 seconds
++//        hideTimer = Timer.scheduledTimer(withTimeInterval: 3.0, repeats: false) { [weak self] _ in
++//            self.hide()
++//        }
++    }
++    
++    /// Hides the bounding box and text layers, but only if called explicitly outside the timer.
++    func hide() {
++        shapeLayer.isHidden = true
++        textLayer.isHidden = true
++        hideTimer?.invalidate()
++        hideTimer = nil
++        print("BoundingBoxView: Hidden")
++    }
+ }
+diff --git a/rttmas/VideoCapture.swift b/rttmas/VideoCapture.swift
+index 219de23..988f86a 100644
+--- a/rttmas/VideoCapture.swift
++++ b/rttmas/VideoCapture.swift
+@@ -11,227 +11,243 @@
+ //  the capture session. It also provides methods to start and stop video capture and delivers captured frames
+ //  to a delegate implementing the VideoCaptureDelegate protocol.
+ 
+-import AVFoundation
+-import CoreVideo
+-import UIKit
++    import AVFoundation
++    import CoreVideo
++    import UIKit
+ 
+ 
+-import AVFoundation
++    import AVFoundation
+ 
+ class VideoCaptureManager: NSObject {
+-    weak var delegate: VideoCaptureDelegate?
+-    var videoCapture: VideoCapture!
+-    var isRunning: Bool {
+-            return videoCapture?.captureSession.isRunning ?? false
+-    }
+-    
+-    func startVideo(videoPreview: UIView) {
+-        videoCapture = VideoCapture()
+-        videoCapture.delegate = delegate
+-        videoCapture.setUp(sessionPreset: .photo) { success in
+-            if success {
+-                if let previewLayer = self.videoCapture.previewLayer {
+-                    DispatchQueue.main.async {
+-                        videoPreview.layer.addSublayer(previewLayer)
+-                        self.videoCapture.previewLayer?.frame = videoPreview.bounds
+-                        print("VideoCaptureManager: Preview layer added")
++    weak var viewController: ViewController?
++
++        weak var delegate: VideoCaptureDelegate?
++        var videoCapture: VideoCapture!
++        var isRunning: Bool {
++                return videoCapture?.captureSession.isRunning ?? false
++        }
++    init(viewController: ViewController) {
++        self.viewController = viewController
++        super.init()
++    }
++        
++        func startVideo(videoPreview: UIView) {
++            guard let viewController = viewController else {
++                print("VideoCaptureManager: ViewController is nil, cannot add bounding box views")
++                return
++            }
++            videoCapture = VideoCapture()
++            videoCapture.delegate = delegate
++            videoCapture.setUp(sessionPreset: .photo) { success in
++                if success {
++                    if let previewLayer = self.videoCapture.previewLayer {
++                        DispatchQueue.main.async {
++                            videoPreview.layer.addSublayer(previewLayer)
++                            self.videoCapture.previewLayer?.frame = videoPreview.bounds
++                            for box in viewController.boundingBoxViews {
++                                    box.addToLayer(videoPreview.layer)
++                                        print("VideoCaptureManager: Added bounding box view to layer")
++                                                    }
++                            print("VideoCaptureManager: Preview layer added")
++                        }
+                     }
++                    
++                  
++                    self.videoCapture.start()
++                    print("VideoCaptureManager: Video capture started successfully")
++                } else {
++                    print("VideoCaptureManager: Failed to set up video capture")
+                 }
+-                self.videoCapture.start()
+-                print("VideoCaptureManager: Video capture started successfully")
+-            } else {
+-                print("VideoCaptureManager: Failed to set up video capture")
+             }
+         }
+     }
+-}
+ 
+-extension VideoCaptureManager: VideoCaptureDelegate {
+-    func videoCapture(_ capture: VideoCapture, didCaptureVideoFrame sampleBuffer: CMSampleBuffer) {
+-        delegate?.videoCapture(capture, didCaptureVideoFrame: sampleBuffer)
+-    }
+-}
+-// Defines the protocol for handling video frame capture events.
+-public protocol VideoCaptureDelegate: AnyObject {
+-  func videoCapture(_ capture: VideoCapture, didCaptureVideoFrame: CMSampleBuffer)
+-}
+-
+-// Identifies the best available camera device based on user preferences and device capabilities.
+-func bestCaptureDevice(for position: AVCaptureDevice.Position) -> AVCaptureDevice {
+-  if position == .back {
+-    // バックカメラの場合
+-    if UserDefaults.standard.bool(forKey: "use_telephoto"),
+-      let device = AVCaptureDevice.default(.builtInTelephotoCamera, for: .video, position: .back)
+-    {
+-      return device
+-    } else if let device = AVCaptureDevice.default(.builtInDualCamera, for: .video, position: .back)
+-    {
+-      return device
+-    } else if let device = AVCaptureDevice.default(
+-      .builtInWideAngleCamera, for: .video, position: .back)
+-    {
+-      return device
+-    } else {
+-      fatalError("Expected back camera device is not available.")
+-    }
+-  } else if position == .front {
+-    // フロントカメラの場合
+-    if let device = AVCaptureDevice.default(.builtInTrueDepthCamera, for: .video, position: .front)
+-    {
+-      return device
+-    } else if let device = AVCaptureDevice.default(
+-      .builtInWideAngleCamera, for: .video, position: .front)
+-    {
+-      return device
+-    } else {
+-      fatalError("Expected front camera device is not available.")
++    extension VideoCaptureManager: VideoCaptureDelegate {
++        func videoCapture(_ capture: VideoCapture, didCaptureVideoFrame sampleBuffer: CMSampleBuffer) {
++            delegate?.videoCapture(capture, didCaptureVideoFrame: sampleBuffer)
++        }
+     }
+-  } else {
+-    fatalError("Unsupported camera position: \(position)")
+-  }
+-}
+-
+-public class VideoCapture: NSObject {
+-  public var previewLayer: AVCaptureVideoPreviewLayer?
+-  public weak var delegate: VideoCaptureDelegate?
+-
+-  let captureDevice = bestCaptureDevice(for: .back)
+-  let captureSession = AVCaptureSession()
+-  let videoOutput = AVCaptureVideoDataOutput()
+-  var cameraOutput = AVCapturePhotoOutput()
+-  let queue = DispatchQueue(label: "camera-queue")
+-
+-  // Configures the camera and capture session with optional session presets.
+-  public func setUp(
+-    sessionPreset: AVCaptureSession.Preset = .hd1280x720, completion: @escaping (Bool) -> Void
+-  ) {
+-    queue.async {
+-      let success = self.setUpCamera(sessionPreset: sessionPreset)
+-      DispatchQueue.main.async {
+-        completion(success)
++    // Defines the protocol for handling video frame capture events.
++    public protocol VideoCaptureDelegate: AnyObject {
++      func videoCapture(_ capture: VideoCapture, didCaptureVideoFrame: CMSampleBuffer)
++    }
++
++    // Identifies the best available camera device based on user preferences and device capabilities.
++    func bestCaptureDevice(for position: AVCaptureDevice.Position) -> AVCaptureDevice {
++      if position == .back {
++        // バックカメラの場合
++        if UserDefaults.standard.bool(forKey: "use_telephoto"),
++          let device = AVCaptureDevice.default(.builtInTelephotoCamera, for: .video, position: .back)
++        {
++          return device
++        } else if let device = AVCaptureDevice.default(.builtInDualCamera, for: .video, position: .back)
++        {
++          return device
++        } else if let device = AVCaptureDevice.default(
++          .builtInWideAngleCamera, for: .video, position: .back)
++        {
++          return device
++        } else {
++          fatalError("Expected back camera device is not available.")
++        }
++      } else if position == .front {
++        // フロントカメラの場合
++        if let device = AVCaptureDevice.default(.builtInTrueDepthCamera, for: .video, position: .front)
++        {
++          return device
++        } else if let device = AVCaptureDevice.default(
++          .builtInWideAngleCamera, for: .video, position: .front)
++        {
++          return device
++        } else {
++          fatalError("Expected front camera device is not available.")
++        }
++      } else {
++        fatalError("Unsupported camera position: \(position)")
+       }
+     }
+-  }
+ 
+-  // Internal method to configure camera inputs, outputs, and session properties.
+-  private func setUpCamera(sessionPreset: AVCaptureSession.Preset) -> Bool {
+-    captureSession.beginConfiguration()
+-    captureSession.sessionPreset = sessionPreset
++    public class VideoCapture: NSObject {
++      public var previewLayer: AVCaptureVideoPreviewLayer?
++      public weak var delegate: VideoCaptureDelegate?
++
++      let captureDevice = bestCaptureDevice(for: .back)
++      let captureSession = AVCaptureSession()
++      let videoOutput = AVCaptureVideoDataOutput()
++      var cameraOutput = AVCapturePhotoOutput()
++      let queue = DispatchQueue(label: "camera-queue")
++
++      // Configures the camera and capture session with optional session presets.
++      public func setUp(
++        sessionPreset: AVCaptureSession.Preset = .hd1280x720, completion: @escaping (Bool) -> Void
++      ) {
++        queue.async {
++          let success = self.setUpCamera(sessionPreset: sessionPreset)
++          DispatchQueue.main.async {
++            completion(success)
++          }
++        }
++      }
+ 
+-    guard let videoInput = try? AVCaptureDeviceInput(device: captureDevice) else {
+-      return false
+-    }
++      // Internal method to configure camera inputs, outputs, and session properties.
++      private func setUpCamera(sessionPreset: AVCaptureSession.Preset) -> Bool {
++        captureSession.beginConfiguration()
++        captureSession.sessionPreset = sessionPreset
+ 
+-    if captureSession.canAddInput(videoInput) {
+-      captureSession.addInput(videoInput)
+-    }
++        guard let videoInput = try? AVCaptureDeviceInput(device: captureDevice) else {
++          return false
++        }
+ 
+-    let previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
+-    previewLayer.videoGravity = .resizeAspectFill
+-    previewLayer.connection?.videoOrientation = .portrait
+-    self.previewLayer = previewLayer
++        if captureSession.canAddInput(videoInput) {
++          captureSession.addInput(videoInput)
++        }
+ 
+-    let settings: [String: Any] = [
+-      kCVPixelBufferPixelFormatTypeKey as String: NSNumber(value: kCVPixelFormatType_32BGRA)
+-    ]
++        let previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
++        previewLayer.videoGravity = .resizeAspectFill
++        previewLayer.connection?.videoOrientation = .portrait
++        self.previewLayer = previewLayer
+ 
+-    videoOutput.videoSettings = settings
+-    videoOutput.alwaysDiscardsLateVideoFrames = true
+-    videoOutput.setSampleBufferDelegate(self, queue: queue)
+-    if captureSession.canAddOutput(videoOutput) {
+-      captureSession.addOutput(videoOutput)
+-    }
++        let settings: [String: Any] = [
++          kCVPixelBufferPixelFormatTypeKey as String: NSNumber(value: kCVPixelFormatType_32BGRA)
++        ]
+ 
+-    if captureSession.canAddOutput(cameraOutput) {
+-      captureSession.addOutput(cameraOutput)
+-    }
+-    switch UIDevice.current.orientation {
+-    case .portrait:
+-      videoOutput.connection(with: .video)?.videoOrientation = .portrait
+-    case .portraitUpsideDown:
+-      videoOutput.connection(with: .video)?.videoOrientation = .portraitUpsideDown
+-    case .landscapeRight:
+-      videoOutput.connection(with: .video)?.videoOrientation = .landscapeLeft
+-    case .landscapeLeft:
+-      videoOutput.connection(with: .video)?.videoOrientation = .landscapeRight
+-    default:
+-      videoOutput.connection(with: .video)?.videoOrientation = .portrait
+-    }
++        videoOutput.videoSettings = settings
++        videoOutput.alwaysDiscardsLateVideoFrames = true
++        videoOutput.setSampleBufferDelegate(self, queue: queue)
++        if captureSession.canAddOutput(videoOutput) {
++          captureSession.addOutput(videoOutput)
++        }
+ 
+-    if let connection = videoOutput.connection(with: .video) {
+-      self.previewLayer?.connection?.videoOrientation = connection.videoOrientation
+-    }
+-    do {
+-      try captureDevice.lockForConfiguration()
+-      captureDevice.focusMode = .continuousAutoFocus
+-      captureDevice.focusPointOfInterest = CGPoint(x: 0.5, y: 0.5)
+-      captureDevice.exposureMode = .continuousAutoExposure
+-      captureDevice.unlockForConfiguration()
+-    } catch {
+-      print("Unable to configure the capture device.")
+-      return false
+-    }
++        if captureSession.canAddOutput(cameraOutput) {
++          captureSession.addOutput(cameraOutput)
++        }
++        switch UIDevice.current.orientation {
++        case .portrait:
++          videoOutput.connection(with: .video)?.videoOrientation = .portrait
++        case .portraitUpsideDown:
++          videoOutput.connection(with: .video)?.videoOrientation = .portraitUpsideDown
++        case .landscapeRight:
++          videoOutput.connection(with: .video)?.videoOrientation = .landscapeLeft
++        case .landscapeLeft:
++          videoOutput.connection(with: .video)?.videoOrientation = .landscapeRight
++        default:
++          videoOutput.connection(with: .video)?.videoOrientation = .portrait
++        }
+ 
+-    captureSession.commitConfiguration()
+-    return true
+-  }
++        if let connection = videoOutput.connection(with: .video) {
++          self.previewLayer?.connection?.videoOrientation = connection.videoOrientation
++        }
++        do {
++          try captureDevice.lockForConfiguration()
++          captureDevice.focusMode = .continuousAutoFocus
++          captureDevice.focusPointOfInterest = CGPoint(x: 0.5, y: 0.5)
++          captureDevice.exposureMode = .continuousAutoExposure
++          captureDevice.unlockForConfiguration()
++        } catch {
++          print("Unable to configure the capture device.")
++          return false
++        }
+ 
+-  // Starts the video capture session.
+-  public func start() {
+-    if !captureSession.isRunning {
+-      DispatchQueue.global(qos: .userInitiated).async { [weak self] in
+-        self?.captureSession.startRunning()
++        captureSession.commitConfiguration()
++        return true
+       }
+-    }
+-  }
+ 
+-  // Stops the video capture session.
+-  public func stop() {
+-    if captureSession.isRunning {
+-      captureSession.stopRunning()
+-    }
+-  }
+-
+-  func updateVideoOrientation() {
+-    guard let connection = videoOutput.connection(with: .video) else { return }
+-    switch UIDevice.current.orientation {
+-    case .portrait:
+-      connection.videoOrientation = .portrait
+-    case .portraitUpsideDown:
+-      connection.videoOrientation = .portraitUpsideDown
+-    case .landscapeRight:
+-      connection.videoOrientation = .landscapeLeft
+-    case .landscapeLeft:
+-      connection.videoOrientation = .landscapeRight
+-    default:
+-      return
+-    }
++      // Starts the video capture session.
++      public func start() {
++        if !captureSession.isRunning {
++          DispatchQueue.global(qos: .userInitiated).async { [weak self] in
++            self?.captureSession.startRunning()
++          }
++        }
++      }
++
++      // Stops the video capture session.
++      public func stop() {
++        if captureSession.isRunning {
++          captureSession.stopRunning()
++        }
++      }
++
++      func updateVideoOrientation() {
++        guard let connection = videoOutput.connection(with: .video) else { return }
++        switch UIDevice.current.orientation {
++        case .portrait:
++          connection.videoOrientation = .portrait
++        case .portraitUpsideDown:
++          connection.videoOrientation = .portraitUpsideDown
++        case .landscapeRight:
++          connection.videoOrientation = .landscapeLeft
++        case .landscapeLeft:
++          connection.videoOrientation = .landscapeRight
++        default:
++          return
++        }
++
++        let currentInput = self.captureSession.inputs.first as? AVCaptureDeviceInput
++        if currentInput?.device.position == .front {
++          connection.isVideoMirrored = true
++        } else {
++          connection.isVideoMirrored = false
++        }
++
++        self.previewLayer?.connection?.videoOrientation = connection.videoOrientation
++      }
+ 
+-    let currentInput = self.captureSession.inputs.first as? AVCaptureDeviceInput
+-    if currentInput?.device.position == .front {
+-      connection.isVideoMirrored = true
+-    } else {
+-      connection.isVideoMirrored = false
+     }
+ 
+-    self.previewLayer?.connection?.videoOrientation = connection.videoOrientation
+-  }
+-
+-}
+-
+-// Extension to handle AVCaptureVideoDataOutputSampleBufferDelegate events.
+-extension VideoCapture: AVCaptureVideoDataOutputSampleBufferDelegate {
+-  public func captureOutput(
+-    _ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer,
+-    from connection: AVCaptureConnection
+-  ) {
+-    delegate?.videoCapture(self, didCaptureVideoFrame: sampleBuffer)
+-  }
+-
+-  public func captureOutput(
+-    _ output: AVCaptureOutput, didDrop sampleBuffer: CMSampleBuffer,
+-    from connection: AVCaptureConnection
+-  ) {
+-    // Optionally handle dropped frames, e.g., due to full buffer.
+-  }
+-}
++    // Extension to handle AVCaptureVideoDataOutputSampleBufferDelegate events.
++    extension VideoCapture: AVCaptureVideoDataOutputSampleBufferDelegate {
++      public func captureOutput(
++        _ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer,
++        from connection: AVCaptureConnection
++      ) {
++        delegate?.videoCapture(self, didCaptureVideoFrame: sampleBuffer)
++      }
++
++      public func captureOutput(
++        _ output: AVCaptureOutput, didDrop sampleBuffer: CMSampleBuffer,
++        from connection: AVCaptureConnection
++      ) {
++        // Optionally handle dropped frames, e.g., due to full buffer.
++      }
++    }
+diff --git a/rttmas/ViewController.swift b/rttmas/ViewController.swift
+index 62da830..e5660ed 100644
+--- a/rttmas/ViewController.swift
++++ b/rttmas/ViewController.swift
+@@ -31,7 +31,7 @@ class ViewController: UIViewController, VideoCaptureDelegate, AVCapturePhotoCapt
+     
+     let selection = UISelectionFeedbackGenerator()
+     lazy var modelManager = ModelManager(viewController: self)
+-    lazy var videoCaptureManager = VideoCaptureManager()
++    lazy var videoCaptureManager = VideoCaptureManager(viewController: self)
+     lazy var detectionManager = DetectionManager(viewController: self)
+     
+     lazy var visionRequest = modelManager.visionRequest
+@@ -192,7 +192,7 @@ class ViewController: UIViewController, VideoCaptureDelegate, AVCapturePhotoCapt
+     
+     func setLabels() {
+         labelName.text = "YOLO11m"
+-        labelVersion.text = "Version " + (UserDefaults.standard.string(forKey: "app_version") ?? "")
++        labelVersion.text = "RTTMAS Version " + (UserDefaults.standard.string(forKey: "app_version") ?? "")
+     }
+     
+     @IBAction func playButton(_ sender: Any) {
+@@ -278,14 +278,15 @@ class ViewController: UIViewController, VideoCaptureDelegate, AVCapturePhotoCapt
+                 let confidence = prediction.labels[0].confidence
+                 let rect = VNImageRectForNormalizedRect(prediction.boundingBox, width, height)
+                 var label = String(format: "%@ %.1f", bestClass, confidence * 100)
+-//                if let ocrText = ocrResults[prediction.uuid.uuidString], !ocrText.isEmpty {
+-//                    label += " \(ocrText)"
+-//                }
++                if let ocrText = ocrResults[prediction.uuid.uuidString], !ocrText.isEmpty {
++                    label += " \(ocrText)"
++                }
+                 let alpha = CGFloat((confidence - 0.2) / (1.0 - 0.2) * 0.9)
+-//                print("Showing bounding box \(i): \(label) at \(rect)")
++                print("ViewController: Showing bounding box \(i) with label \(label) at \(rect)")
+                 boundingBoxViews[i].show(frame: rect, label: label, color: colors[bestClass] ?? .white, alpha: alpha)
+             } else {
+-                boundingBoxViews[i].hide()
++                // Only hide if not recently shown (handled by timer in BoundingBoxView)
++//                boundingBoxViews[i].hide()
+             }
+         }
+         
+@@ -382,777 +383,3 @@ class ViewController: UIViewController, VideoCaptureDelegate, AVCapturePhotoCapt
+ }
+ 
+ 
+-//// ViewController.swift
+-//import AVFoundation
+-//import CoreML
+-//import CoreMedia
+-//import UIKit
+-//import Vision
+-//
+-//var mlModel = try! yolo11m(configuration: mlmodelConfig).model
+-//var licensePlateModel = try! Car_Plate_Detector(configuration: mlmodelConfig).model // Custom model name
+-//var mlmodelConfig: MLModelConfiguration = {
+-//    let config = MLModelConfiguration()
+-//    if #available(iOS 17.0, *) {
+-//        config.setValue(1, forKey: "experimentalMLE5EngineUsage")
+-//    }
+-//    return config
+-//}()
+-//
+-//class ViewController: UIViewController {
+-//    var ocrResults: [String: String] = [:] // Key: UUID of prediction, Value: OCR text
+-//    @IBOutlet var videoPreview: UIView!
+-//    @IBOutlet var View0: UIView!
+-//    @IBOutlet var segmentedControl: UISegmentedControl!
+-//    @IBOutlet var playButtonOutlet: UIBarButtonItem!
+-//    @IBOutlet var pauseButtonOutlet: UIBarButtonItem!
+-//    @IBOutlet var slider: UISlider!
+-//    @IBOutlet var sliderConf: UISlider!
+-//    @IBOutlet weak var sliderConfLandScape: UISlider!
+-//    @IBOutlet var sliderIoU: UISlider!
+-//    @IBOutlet weak var sliderIoULandScape: UISlider!
+-//    @IBOutlet weak var labelName: UILabel!
+-//    @IBOutlet weak var labelFPS: UILabel!
+-//    @IBOutlet weak var labelZoom: UILabel!
+-//    @IBOutlet weak var labelVersion: UILabel!
+-//    @IBOutlet weak var labelSlider: UILabel!
+-//    @IBOutlet weak var labelSliderConf: UILabel!
+-//    @IBOutlet weak var labelSliderConfLandScape: UILabel!
+-//    @IBOutlet weak var labelSliderIoU: UILabel!
+-//    @IBOutlet weak var labelSliderIoULandScape: UILabel!
+-//    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+-//    @IBOutlet weak var focus: UIImageView!
+-//    @IBOutlet weak var toolBar: UIToolbar!
+-//    @IBOutlet weak var hoveringTabButton : UIButton!
+-//    static var croppedHistory: [(carImage: UIImage, plateImage: UIImage)] = []
+-//    
+-//    let selection = UISelectionFeedbackGenerator()
+-//    var detector = try! VNCoreMLModel(for: mlModel)
+-//    var licensePlateDetector = try! VNCoreMLModel(for: licensePlateModel)
+-//    var session: AVCaptureSession!
+-//    var videoCapture: VideoCapture!
+-//    var currentBuffer: CVPixelBuffer?
+-//    var framesDone = 0
+-//    var t0 = 0.0
+-//    var t1 = 0.0
+-//    var t2 = 0.0
+-//    var t3 = CACurrentMediaTime()
+-//    var t4 = 0.0
+-//    var latestFrame: UIImage?
+-//    var longSide: CGFloat = 3
+-//    var shortSide: CGFloat = 4
+-//    var frameSizeCaptured = false
+-//    
+-//    // Store cropped images
+-//    private var latestCroppedCarImage: UIImage?
+-//    private var latestCroppedPlateImage: UIImage?
+-//
+-//    let developerMode = UserDefaults.standard.bool(forKey: "developer_mode")
+-//    let save_detections = false
+-//    let save_frames = false
+-//
+-//    // Hovering tab button
+-////    private lazy var hoveringTabButton: UIButton = {
+-////       
+-////    }()
+-//
+-////    hoveringTabButton = {
+-////        let button = UIButton(type: .custom)
+-////        button.setImage(UIImage(systemName: "photo"), for: .normal)
+-////        button.tintColor = .white
+-////        button.backgroundColor = .systemBlue
+-////        button.layer.cornerRadius = 25
+-////        button.translatesAutoresizingMaskIntoConstraints = false
+-////        button.addTarget(self, action: #selector(toggleCroppedView), for: .touchUpInside)
+-////        button.layer.shadowColor = UIColor.black.cgColor
+-////        button.layer.shadowOpacity = 0.5
+-////        button.layer.shadowOffset = CGSize(width: 0, height: 2)
+-////        button.layer.shadowRadius = 4
+-////        return button
+-////    }
+-//    private var isShowingCroppedView = false
+-//
+-//    lazy var visionRequest: VNCoreMLRequest = {
+-//        let request = VNCoreMLRequest(model: detector) { [weak self] request, error in
+-//            self?.processCarObservations(for: request, error: error)
+-//        }
+-//        request.imageCropAndScaleOption = .scaleFill
+-//        return request
+-//    }()
+-//
+-//    lazy var licensePlateRequest: VNCoreMLRequest = {
+-//        let request = VNCoreMLRequest(model: licensePlateDetector) { [weak self] request, error in
+-//            self?.processLicensePlateObservations(for: request, error: error)
+-//        }
+-//        request.imageCropAndScaleOption = .scaleFill
+-//        return request
+-//    }()
+-//
+-//    override func viewDidLoad() {
+-//        super.viewDidLoad()
+-//        slider.value = 30
+-//        setLabels()
+-//        setUpBoundingBoxViews()
+-//        setUpOrientationChangeNotification()
+-////        setupHoveringTabButton()
+-//        startVideo()
+-//        setModel()
+-//        
+-//        title = "Video Feed"
+-//        navigationItem.backButtonTitle = ""
+-//        print("Navigation controller: \(navigationController != nil ? "Present" : "Nil")")
+-//    }
+-//
+-////    private func setupHoveringTabButton() {
+-////        view.addSubview(hoveringTabButton)
+-////        NSLayoutConstraint.activate([
+-////            hoveringTabButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
+-////            hoveringTabButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20),
+-////            hoveringTabButton.widthAnchor.constraint(equalToConstant: 50),
+-////            hoveringTabButton.heightAnchor.constraint(equalToConstant: 50)
+-////        ])
+-////        hoveringTabButton.isUserInteractionEnabled = true
+-////        view.bringSubviewToFront(hoveringTabButton)
+-////    }
+-//
+-//    @IBAction private func toggleCroppedView() {
+-//        selection.selectionChanged()
+-//        print("Hovering tab button tapped in ViewController")
+-//        let croppedVC = CroppedImagesViewController()
+-//        navigationController?.pushViewController(croppedVC, animated: true)
+-//        isShowingCroppedView = true
+-//        hoveringTabButton.setImage(UIImage(systemName: "video"), for: .normal)
+-//    }
+-//
+-//    override func viewWillTransition(to size: CGSize, with coordinator: any UIViewControllerTransitionCoordinator) {
+-//        super.viewWillTransition(to: size, with: coordinator)
+-//
+-//        if size.width > size.height {
+-//            labelSliderConf.isHidden = true
+-//            sliderConf.isHidden = true
+-//            labelSliderIoU.isHidden = true
+-//            sliderIoU.isHidden = true
+-//            toolBar.setBackgroundImage(UIImage(), forToolbarPosition: .any, barMetrics: .default)
+-//            toolBar.setShadowImage(UIImage(), forToolbarPosition: .any)
+-//
+-//            labelSliderConfLandScape.isHidden = false
+-//            sliderConfLandScape.isHidden = false
+-//            labelSliderIoULandScape.isHidden = false
+-//            sliderIoULandScape.isHidden = false
+-//        } else {
+-//            labelSliderConf.isHidden = false
+-//            sliderConf.isHidden = false
+-//            labelSliderIoU.isHidden = false
+-//            sliderIoU.isHidden = false
+-//            toolBar.setBackgroundImage(nil, forToolbarPosition: .any, barMetrics: .default)
+-//            toolBar.setShadowImage(nil, forToolbarPosition: .any)
+-//
+-//            labelSliderConfLandScape.isHidden = true
+-//            sliderConfLandScape.isHidden = true
+-//            labelSliderIoULandScape.isHidden = true
+-//            sliderIoULandScape.isHidden = true
+-//        }
+-//        self.videoCapture.previewLayer?.frame = CGRect(x: 0, y: 0, width: size.width, height: size.height)
+-//    }
+-//
+-//    private func setUpOrientationChangeNotification() {
+-//        NotificationCenter.default.addObserver(
+-//            self, selector: #selector(orientationDidChange),
+-//            name: UIDevice.orientationDidChangeNotification, object: nil)
+-//    }
+-//
+-//    @objc func orientationDidChange() {
+-//        videoCapture.updateVideoOrientation()
+-//    }
+-//
+-//    @IBAction func vibrate(_ sender: Any) {
+-//        selection.selectionChanged()
+-//    }
+-//
+-//    @IBAction func indexChanged(_ sender: Any) {
+-//        selection.selectionChanged()
+-//        activityIndicator.startAnimating()
+-//
+-//        switch segmentedControl.selectedSegmentIndex {
+-//        case 0:
+-//            self.labelName.text = "YOLO11n"
+-//            mlModel = try! yolo11n(configuration: .init()).model
+-//        case 1:
+-//            self.labelName.text = "YOLO11s"
+-//            mlModel = try! yolo11s(configuration: .init()).model
+-//        case 2:
+-//            self.labelName.text = "YOLO11m"
+-//            mlModel = try! yolo11m(configuration: .init()).model
+-//        case 3:
+-//            self.labelName.text = "YOLO11l"
+-//            mlModel = try! yolo11l(configuration: .init()).model
+-//        case 4:
+-//            self.labelName.text = "YOLO11x"
+-//            mlModel = try! yolo11x(configuration: .init()).model
+-//        default:
+-//            break
+-//        }
+-//        setModel()
+-//        setUpBoundingBoxViews()
+-//        activityIndicator.stopAnimating()
+-//    }
+-//
+-//    func setModel() {
+-//        detector = try! VNCoreMLModel(for: mlModel)
+-//        detector.featureProvider = ThresholdProvider()
+-//        licensePlateDetector = try! VNCoreMLModel(for: licensePlateModel)
+-//        licensePlateDetector.featureProvider = ThresholdProvider()
+-//
+-//        let carRequest = VNCoreMLRequest(model: detector) { [weak self] request, error in
+-//            self?.processCarObservations(for: request, error: error)
+-//        }
+-//        carRequest.imageCropAndScaleOption = .scaleFill
+-//        visionRequest = carRequest
+-//
+-//        let plateRequest = VNCoreMLRequest(model: licensePlateDetector) { [weak self] request, error in
+-//            self?.processLicensePlateObservations(for: request, error: error)
+-//        }
+-//        plateRequest.imageCropAndScaleOption = .scaleFill
+-//        licensePlateRequest = plateRequest
+-//
+-//        t2 = 0.0
+-//        t3 = CACurrentMediaTime()
+-//        t4 = 0.0
+-//    }
+-//
+-//    @IBAction func sliderChanged(_ sender: Any) {
+-//        let conf = Double(round(100 * sliderConf.value)) / 100
+-//        let iou = Double(round(100 * sliderIoU.value)) / 100
+-//        self.labelSliderConf.text = String(conf) + " Confidence Threshold"
+-//        self.labelSliderIoU.text = String(iou) + " IoU Threshold"
+-//        detector.featureProvider = ThresholdProvider(iouThreshold: iou, confidenceThreshold: conf)
+-//        licensePlateDetector.featureProvider = ThresholdProvider(iouThreshold: iou, confidenceThreshold: conf)
+-//    }
+-//
+-//    @IBAction func takePhoto(_ sender: Any?) {
+-//        let t0 = DispatchTime.now().uptimeNanoseconds
+-//        let settings = AVCapturePhotoSettings()
+-//        usleep(20_000)
+-//        self.videoCapture.cameraOutput.capturePhoto(with: settings, delegate: self as AVCapturePhotoCaptureDelegate)
+-//        print("3 Done: ", Double(DispatchTime.now().uptimeNanoseconds - t0) / 1E9)
+-//    }
+-//
+-//    @IBAction func logoButton(_ sender: Any) {
+-//        selection.selectionChanged()
+-//        if let link = URL(string: "https://www.ultralytics.com") {
+-//            UIApplication.shared.open(link)
+-//        }
+-//    }
+-//
+-//    func setLabels() {
+-//        self.labelName.text = "YOLO11m"
+-//        self.labelVersion.text = "Version " + UserDefaults.standard.string(forKey: "app_version")!
+-//    }
+-//
+-//    @IBAction func playButton(_ sender: Any) {
+-//        selection.selectionChanged()
+-//        self.videoCapture.start()
+-//        playButtonOutlet.isEnabled = false
+-//        pauseButtonOutlet.isEnabled = true
+-//    }
+-//
+-//    @IBAction func pauseButton(_ sender: Any?) {
+-//        selection.selectionChanged()
+-//        self.videoCapture.stop()
+-//        playButtonOutlet.isEnabled = true
+-//        pauseButtonOutlet.isEnabled = false
+-//    }
+-//
+-//    @IBAction func switchCameraTapped(_ sender: Any) {
+-//        self.videoCapture.captureSession.beginConfiguration()
+-//        let currentInput = self.videoCapture.captureSession.inputs.first as? AVCaptureDeviceInput
+-//        self.videoCapture.captureSession.removeInput(currentInput!)
+-//        guard let currentPosition = currentInput?.device.position else { return }
+-//
+-//        let nextCameraPosition: AVCaptureDevice.Position = currentPosition == .back ? .front : .back
+-//        let newCameraDevice = bestCaptureDevice(for: nextCameraPosition)
+-//
+-//        guard let videoInput1 = try? AVCaptureDeviceInput(device: newCameraDevice) else { return }
+-//        self.videoCapture.captureSession.addInput(videoInput1)
+-//        self.videoCapture.updateVideoOrientation()
+-//        self.videoCapture.captureSession.commitConfiguration()
+-//    }
+-//
+-//    @IBAction func shareButton(_ sender: Any) {
+-//        selection.selectionChanged()
+-//        let settings = AVCapturePhotoSettings()
+-//        self.videoCapture.cameraOutput.capturePhoto(with: settings, delegate: self as AVCapturePhotoCaptureDelegate)
+-//    }
+-//
+-//    @IBAction func saveScreenshotButton(_ shouldSave: Bool = true) {
+-//        // Uncomment if needed
+-//        // let layer = UIApplication.shared.keyWindow!.layer
+-//        // let scale = UIScreen.main.scale
+-//        // UIGraphicsBeginImageContextWithOptions(layer.frame.size, false, scale);
+-//        // layer.render(in: UIGraphicsGetCurrentContext()!)
+-//        // let screenshot = UIGraphicsGetImageFromCurrentImageContext()
+-//        // UIGraphicsEndImageContext()
+-//        // UIImageWriteToSavedPhotosAlbum(screenshot!, nil, nil, nil)
+-//    }
+-//
+-//    let maxBoundingBoxViews = 100
+-//    var boundingBoxViews = [BoundingBoxView]()
+-//    var colors: [String: UIColor] = [:]
+-//    let ultralyticsColors: [UIColor] = [
+-//        UIColor(red: 4/255, green: 42/255, blue: 255/255, alpha: 0.6),
+-//        UIColor(red: 11/255, green: 219/255, blue: 235/255, alpha: 0.6),
+-//        UIColor(red: 243/255, green: 243/255, blue: 243/255, alpha: 0.6),
+-//        UIColor(red: 0/255, green: 223/255, blue: 183/255, alpha: 0.6),
+-//        UIColor(red: 17/255, green: 31/255, blue: 104/255, alpha: 0.6),
+-//        UIColor(red: 255/255, green: 111/255, blue: 221/255, alpha: 0.6),
+-//        UIColor(red: 255/255, green: 68/255, blue: 79/255, alpha: 0.6),
+-//        UIColor(red: 204/255, green: 237/255, blue: 0/255, alpha: 0.6),
+-//        UIColor(red: 0/255, green: 243/255, blue: 68/255, alpha: 0.6),
+-//        UIColor(red: 189/255, green: 0/255, blue: 255/255, alpha: 0.6),
+-//        UIColor(red: 0/255, green: 180/255, blue: 255/255, alpha: 0.6),
+-//        UIColor(red: 221/255, green: 0/255, blue: 186/255, alpha: 0.6),
+-//        UIColor(red: 0/255, green: 255/255, blue: 255/255, alpha: 0.6),
+-//        UIColor(red: 38/255, green: 192/255, blue: 0/255, alpha: 0.6),
+-//        UIColor(red: 1/255, green: 255/255, blue: 179/255, alpha: 0.6),
+-//        UIColor(red: 125/255, green: 36/255, blue: 255/255, alpha: 0.6),
+-//        UIColor(red: 123/255, green: 0/255, blue: 104/255, alpha: 0.6),
+-//        UIColor(red: 255/255, green: 27/255, blue: 108/255, alpha: 0.6),
+-//        UIColor(red: 252/255, green: 109/255, blue: 47/255, alpha: 0.6),
+-//        UIColor(red: 162/255, green: 255/255, blue: 11/255, alpha: 0.6),
+-//    ]
+-//
+-//    func setUpBoundingBoxViews() {
+-//        while boundingBoxViews.count < maxBoundingBoxViews {
+-//            boundingBoxViews.append(BoundingBoxView())
+-//        }
+-//        guard let classLabels = mlModel.modelDescription.classLabels as? [String] else {
+-//            fatalError("Class labels are missing from the model description")
+-//        }
+-//        var count = 0
+-//        for label in classLabels {
+-//            let color = ultralyticsColors[count % ultralyticsColors.count]
+-//            colors[label] = color
+-//            count += 1
+-//        }
+-//        colors["license_plate"] = UIColor(red: 255/255, green: 215/255, blue: 0/255, alpha: 0.6)
+-//    }
+-//
+-//    func startVideo() {
+-//        videoCapture = VideoCapture()
+-//        videoCapture.delegate = self
+-//        videoCapture.setUp(sessionPreset: .photo) { success in
+-//            if success {
+-//                if let previewLayer = self.videoCapture.previewLayer {
+-//                    self.videoPreview.layer.addSublayer(previewLayer)
+-//                    self.videoCapture.previewLayer?.frame = self.videoPreview.bounds
+-//                }
+-//                for box in self.boundingBoxViews {
+-//                    box.addToLayer(self.videoPreview.layer)
+-//                }
+-//                self.videoCapture.start()
+-//            }
+-//        }
+-//    }
+-//
+-//    func predict(sampleBuffer: CMSampleBuffer) {
+-//        if currentBuffer == nil, let pixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) {
+-//            currentBuffer = pixelBuffer
+-//            if !frameSizeCaptured {
+-//                let frameWidth = CGFloat(CVPixelBufferGetWidth(pixelBuffer))
+-//                let frameHeight = CGFloat(CVPixelBufferGetHeight(pixelBuffer))
+-//                longSide = max(frameWidth, frameHeight)
+-//                shortSide = min(frameWidth, frameHeight)
+-//                frameSizeCaptured = true
+-//            }
+-//            let imageOrientation: CGImagePropertyOrientation
+-//            switch UIDevice.current.orientation {
+-//            case .portrait: imageOrientation = .up
+-//            case .portraitUpsideDown: imageOrientation = .down
+-//            case .landscapeLeft, .landscapeRight: imageOrientation = .up
+-//            case .unknown: imageOrientation = .up
+-//            default: imageOrientation = .up
+-//            }
+-//            let handler = VNImageRequestHandler(cvPixelBuffer: pixelBuffer, orientation: imageOrientation)
+-//            if UIDevice.current.orientation != .faceUp {
+-//                t0 = CACurrentMediaTime()
+-//                do {
+-//                    try handler.perform([visionRequest])
+-//                } catch {
+-//                    print(error)
+-//                }
+-//                t1 = CACurrentMediaTime() - t0
+-//            }
+-//            currentBuffer = nil
+-//        }
+-//    }
+-//    private var lastCarPredictions: [VNRecognizedObjectObservation] = []
+-//
+-//    func processCarObservations(for request: VNRequest, error: Error?) {
+-//        DispatchQueue.main.async {
+-//            guard let results = request.results as? [VNRecognizedObjectObservation] else {
+-//                self.show(predictions: [], frame: self.latestFrame!)
+-//                return
+-//            }
+-//            let carPredictions = results.filter { ["car", "truck", "motorcycle"].contains($0.labels[0].identifier.lowercased()) && $0.confidence > 0.8 }
+-//            self.lastCarPredictions = carPredictions // Store car predictions
+-//            self.processCars(predictions: carPredictions)
+-//        }
+-//    }
+-//
+-//
+-//    func processLicensePlateObservations(for request: VNRequest, error: Error?) {
+-//        guard let results = request.results as? [VNRecognizedObjectObservation],
+-//              let plate = results.first(where: { $0.labels[0].identifier.lowercased() == "license_plate" && $0.confidence > 0.6 }),
+-//              let carImage = latestCroppedCarImage else { return }
+-//        
+-//        if let croppedPlate = cropImage(carImage, bbox: plate.boundingBox) {
+-//            self.latestCroppedPlateImage = croppedPlate
+-//            let width = croppedPlate.size.width
+-//            let height = croppedPlate.size.height
+-//            print("Cropped plate dimensions: \(width)x\(height)")
+-//            
+-//            if width <= 2 || height <= 2 {
+-//                print("Skipping OCR: Image too small (\(width)x\(height))")
+-//                DispatchQueue.main.async {
+-//                    self.ocrResults[plate.uuid.uuidString] = "Too small"
+-//                    // Combine car predictions with plate prediction
+-//                    let combinedPredictions = self.lastCarPredictions + [plate]
+-//                    self.show(predictions: combinedPredictions, frame: self.latestFrame!)
+-//                    self.updateCroppedImagesTab()
+-//                }
+-//                return
+-//            }
+-//            
+-//            let ocrText = recognizeText(from: croppedPlate)
+-//            DispatchQueue.main.async {
+-//                self.ocrResults[plate.uuid.uuidString] = ocrText
+-//                // Combine car predictions with plate prediction
+-//                let combinedPredictions = self.lastCarPredictions + [plate]
+-//                self.show(predictions: combinedPredictions, frame: self.latestFrame!)
+-//                self.updateCroppedImagesTab()
+-//            }
+-//        } else {
+-//            print("Failed to crop license plate image with bounding box: \(plate.boundingBox)")
+-//        }
+-//    }
+-//
+-//    // Ensure processCars passes the correct car image
+-//    func processCars(predictions: [VNRecognizedObjectObservation]) {
+-//        guard let frame = latestFrame, let pixelBuffer = currentBuffer else { return }
+-//        var allPredictions: [VNRecognizedObjectObservation] = predictions
+-//
+-//        for car in predictions {
+-//            // Reset cropped images for each new car detection
+-//            self.latestCroppedCarImage = nil
+-//            self.latestCroppedPlateImage = nil
+-//            
+-//            if let croppedCar = cropImage(frame, bbox: car.boundingBox) {
+-//                self.latestCroppedCarImage = croppedCar
+-//                let ciImage = CIImage(image: croppedCar)!
+-//                let handler = VNImageRequestHandler(ciImage: ciImage)
+-//                do {
+-//                    try handler.perform([licensePlateRequest])
+-//                } catch {
+-//                    print("License plate detection error: \(error)")
+-//                    continue // Skip this car if plate detection fails
+-//                }
+-//                if let plateImage = latestCroppedPlateImage {
+-//                    ViewController.croppedHistory.insert((carImage: croppedCar, plateImage: plateImage), at: 0)
+-//                    print("Added to croppedHistory: \(ViewController.croppedHistory.count) entries")
+-//                } else {
+-//                    print("No plate image detected for car with bounding box: \(car.boundingBox), skipping to next car")
+-//                    continue // Skip this car and move to the next if no plate is detected
+-//                }
+-//            } else {
+-//                print("Failed to crop car image for bounding box: \(car.boundingBox)")
+-//            }
+-//        }
+-//        self.show(predictions: allPredictions, frame: frame)
+-//        self.updateCroppedImagesTab()
+-//    }
+-//    
+-//    private func updateCroppedImagesTab() {
+-//        NotificationCenter.default.post(
+-//            name: NSNotification.Name("CroppedImagesUpdated"),
+-//            object: nil,
+-//            userInfo: ["history": ViewController.croppedHistory]
+-//        )
+-//        print("Notification posted with history count: \(ViewController.croppedHistory.count)")
+-//    }
+-//
+-//    func saveText(text: String, file: String = "saved.txt") {
+-//        if let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
+-//            let fileURL = dir.appendingPathComponent(file)
+-//            do {
+-//                let fileHandle = try FileHandle(forWritingTo: fileURL)
+-//                fileHandle.seekToEndOfFile()
+-//                fileHandle.write(text.data(using: .utf8)!)
+-//                fileHandle.closeFile()
+-//            } catch {
+-//                do {
+-//                    try text.write(to: fileURL, atomically: false, encoding: .utf8)
+-//                } catch {
+-//                    print("no file written")
+-//                }
+-//            }
+-//        }
+-//    }
+-//
+-//    func saveImage() {
+-//        let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
+-//        let fileURL = dir!.appendingPathComponent("saved.jpg")
+-//        let image = UIImage(named: "ultralytics_yolo_logotype.png")
+-//        FileManager.default.createFile(atPath: fileURL.path, contents: image!.jpegData(compressionQuality: 0.5), attributes: nil)
+-//    }
+-//
+-//    func freeSpace() -> Double {
+-//        let fileURL = URL(fileURLWithPath: NSHomeDirectory() as String)
+-//        do {
+-//            let values = try fileURL.resourceValues(forKeys: [.volumeAvailableCapacityForImportantUsageKey])
+-//            return Double(values.volumeAvailableCapacityForImportantUsage!) / 1E9
+-//        } catch {
+-//            print("Error retrieving storage capacity: \(error.localizedDescription)")
+-//            return 0
+-//        }
+-//    }
+-//
+-//    func memoryUsage() -> Double {
+-//        var taskInfo = mach_task_basic_info()
+-//        var count = mach_msg_type_number_t(MemoryLayout<mach_task_basic_info>.size) / 4
+-//        let kerr: kern_return_t = withUnsafeMutablePointer(to: &taskInfo) {
+-//            $0.withMemoryRebound(to: integer_t.self, capacity: 1) {
+-//                task_info(mach_task_self_, task_flavor_t(MACH_TASK_BASIC_INFO), $0, &count)
+-//            }
+-//        }
+-//        if kerr == KERN_SUCCESS {
+-//            return Double(taskInfo.resident_size) / 1E9
+-//        } else {
+-//            return 0
+-//        }
+-//    }
+-//
+-//    func show(predictions: [VNRecognizedObjectObservation], frame: UIImage) {
+-//        var str = ""
+-//        let date = Date()
+-//        let calendar = Calendar.current
+-//        let hour = calendar.component(.hour, from: date)
+-//        let minutes = calendar.component(.minute, from: date)
+-//        let seconds = calendar.component(.second, from: date)
+-//        let nanoseconds = calendar.component(.nanosecond, from: date)
+-//        let sec_day = Double(hour) * 3600.0 + Double(minutes) * 60.0 + Double(seconds) + Double(nanoseconds) / 1E9
+-//
+-//        self.labelSlider.text = String(predictions.count) + " items (max " + String(Int(slider.value)) + ")"
+-//        let width = videoPreview.bounds.width
+-//        let height = videoPreview.bounds.height
+-//
+-//        let targetClasses = ["car", "truck", "motorcycle"]
+-//
+-//        if UIDevice.current.orientation == .portrait {
+-//            var ratio: CGFloat = 1.0
+-//            if videoCapture.captureSession.sessionPreset == .photo {
+-//                ratio = (height / width) / (4.0 / 3.0)
+-//            } else {
+-//                ratio = (height / width) / (16.0 / 9.0)
+-//            }
+-//            
+-//            for i in 0..<boundingBoxViews.count {
+-//                if i < predictions.count && i < Int(slider.value) {
+-//                    let prediction = predictions[i]
+-//                    let bestClass = prediction.labels[0].identifier.lowercased()
+-//                    let confidence = prediction.labels[0].confidence
+-//                    
+-//                    // Use VNImageRectForNormalizedRect for all bounding boxes
+-//                    let rect = VNImageRectForNormalizedRect(prediction.boundingBox, Int(width), Int(height))
+-//                    
+-//                    var label = String(format: "%@ %.1f", bestClass, confidence * 100)
+-////                    if let ocrText = ocrResults[prediction.uuid.uuidString], !ocrText.isEmpty {
+-////                        label += " " + ocrText
+-////                    }
+-//                    
+-//                    let alpha = CGFloat((confidence - 0.2) / (1.0 - 0.2) * 0.9)
+-//                    print("Showing bounding box \(i): \(label) at \(rect)")
+-//                    boundingBoxViews[i].show(frame: rect, label: label, color: colors[bestClass] ?? UIColor.white, alpha: alpha)
+-//                } else {
+-//                    boundingBoxViews[i].hide()
+-//                }
+-//            }
+-//        }
+-//
+-//        if developerMode {
+-//            if save_detections {
+-//                saveText(text: str, file: "detections.txt")
+-//            }
+-//            if save_frames {
+-//                str = String(format: "%.3f %.3f %.3f %.3f %.1f %.1f %.1f\n",
+-//                             sec_day, freeSpace(), memoryUsage(), UIDevice.current.batteryLevel,
+-//                             self.t1 * 1000, self.t2 * 1000, 1 / self.t4)
+-//                saveText(text: str, file: "frames.txt")
+-//            }
+-//        }
+-//
+-//        if self.t1 < 10.0 {
+-//            self.t2 = self.t1 * 0.05 + self.t2 * 0.95
+-//        }
+-//        self.t4 = (CACurrentMediaTime() - self.t3) * 0.05 + self.t4 * 0.95
+-//        self.labelFPS.text = String(format: "%.1f FPS - %.1f ms", 1 / self.t4, self.t2 * 1000)
+-//        self.t3 = CACurrentMediaTime()
+-//    }
+-//
+-//    func cropImage(_ image: UIImage, bbox: CGRect) -> UIImage? {
+-//        guard let cgImage = image.cgImage else {
+-//            print("Failed to get CGImage from UIImage")
+-//            return nil
+-//        }
+-//        
+-//        let imageWidth = Int(cgImage.width)
+-//        let imageHeight = Int(cgImage.height)
+-//        
+-//        // Use VNImageRectForNormalizedRect to convert normalized bounding box to pixel coordinates
+-//        let cropRect = VNImageRectForNormalizedRect(bbox, imageWidth, imageHeight)
+-//        
+-//        // Ensure crop rect stays within image bounds
+-//        let boundedRect = cropRect.intersection(CGRect(x: 0, y: 0, width: imageWidth, height: imageHeight))
+-//        guard boundedRect.width > 0, boundedRect.height > 0 else {
+-//            print("Crop rect out of bounds or invalid: \(cropRect)")
+-//            return nil
+-//        }
+-//        
+-//        print("Cropping at: x=\(boundedRect.origin.x), y=\(boundedRect.origin.y), width=\(boundedRect.width), height=\(boundedRect.height)")
+-//        
+-//        if let croppedCGImage = cgImage.cropping(to: boundedRect) {
+-//            return UIImage(cgImage: croppedCGImage, scale: image.scale, orientation: image.imageOrientation)
+-//        }
+-//        print("Failed to crop CGImage at \(boundedRect)")
+-//        return nil
+-//    }
+-//    func recognizeText(from image: UIImage) -> String {
+-//        guard let cgImage = image.cgImage else {
+-//            print("Failed to get CGImage for OCR")
+-//            return ""
+-//        }
+-//
+-//        let request = VNRecognizeTextRequest()
+-//        request.recognitionLevel = .accurate
+-//        request.recognitionLanguages = ["en-US"]
+-//        request.usesLanguageCorrection = false
+-//
+-//        let requestHandler = VNImageRequestHandler(cgImage: cgImage, options: [:])
+-//        do {
+-//            try requestHandler.perform([request])
+-//            guard let observations = request.results as? [VNRecognizedTextObservation] else {
+-//                print("No OCR observations found")
+-//                return ""
+-//            }
+-//            let recognizedStrings = observations.compactMap { $0.topCandidates(1).first?.string }
+-//            let result = recognizedStrings.joined(separator: " ")
+-//            print("Recognized text: '\(result)'")
+-//            return result
+-//        } catch {
+-//            print("OCR error: \(error)")
+-//            return ""
+-//        }
+-//    }
+-//
+-//    let minimumZoom: CGFloat = 1.0
+-//    let maximumZoom: CGFloat = 10.0
+-//    var lastZoomFactor: CGFloat = 1.0
+-//
+-//    @IBAction func pinch(_ pinch: UIPinchGestureRecognizer) {
+-//        let device = videoCapture.captureDevice
+-//
+-//        func minMaxZoom(_ factor: CGFloat) -> CGFloat {
+-//            return min(min(max(factor, minimumZoom), maximumZoom), device.activeFormat.videoMaxZoomFactor)
+-//        }
+-//
+-//        func update(scale factor: CGFloat) {
+-//            do {
+-//                try device.lockForConfiguration()
+-//                defer { device.unlockForConfiguration() }
+-//                device.videoZoomFactor = factor
+-//            } catch {
+-//                print("\(error.localizedDescription)")
+-//            }
+-//        }
+-//
+-//        let newScaleFactor = minMaxZoom(pinch.scale * lastZoomFactor)
+-//        switch pinch.state {
+-//        case .began, .changed:
+-//            update(scale: newScaleFactor)
+-//            self.labelZoom.text = String(format: "%.2fx", newScaleFactor)
+-//            self.labelZoom.font = UIFont.preferredFont(forTextStyle: .title2)
+-//        case .ended:
+-//            lastZoomFactor = minMaxZoom(newScaleFactor)
+-//            update(scale: lastZoomFactor)
+-//            self.labelZoom.font = UIFont.preferredFont(forTextStyle: .body)
+-//        default: break
+-//        }
+-//    }
+-//}
+-//
+-//extension ViewController: VideoCaptureDelegate {
+-//    func videoCapture(_ capture: VideoCapture, didCaptureVideoFrame sampleBuffer: CMSampleBuffer) {
+-//        guard let pixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else { return }
+-//        let ciImage = CIImage(cvPixelBuffer: pixelBuffer)
+-//        let context = CIContext()
+-//        guard let cgImage = context.createCGImage(ciImage, from: ciImage.extent) else {
+-//            print("Failed to render CIImage to CGImage")
+-//            return
+-//        }
+-//        let image = UIImage(cgImage: cgImage)
+-//
+-//        DispatchQueue.main.async {
+-//            self.latestFrame = image
+-//        }
+-//        predict(sampleBuffer: sampleBuffer)
+-//    }
+-//}
+-//
+-//extension ViewController: AVCapturePhotoCaptureDelegate {
+-//    func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
+-//        if let error = error {
+-//            print("error occurred : \(error.localizedDescription)")
+-//        }
+-//        if let dataImage = photo.fileDataRepresentation() {
+-//            let dataProvider = CGDataProvider(data: dataImage as CFData)
+-//            let cgImageRef: CGImage! = CGImage(
+-//                jpegDataProviderSource: dataProvider!, decode: nil, shouldInterpolate: true,
+-//                intent: .defaultIntent)
+-//            var isCameraFront = false
+-//            if let currentInput = self.videoCapture.captureSession.inputs.first as? AVCaptureDeviceInput,
+-//               currentInput.device.position == .front {
+-//                isCameraFront = true
+-//            }
+-//            var orientation: CGImagePropertyOrientation = isCameraFront ? .leftMirrored : .right
+-//            switch UIDevice.current.orientation {
+-//            case .landscapeLeft:
+-//                orientation = isCameraFront ? .downMirrored : .up
+-//            case .landscapeRight:
+-//                orientation = isCameraFront ? .upMirrored : .down
+-//            default:
+-//                break
+-//            }
+-//            var image = UIImage(cgImage: cgImageRef, scale: 0.5, orientation: .right)
+-//            if let orientedCIImage = CIImage(image: image)?.oriented(orientation),
+-//               let cgImage = CIContext().createCGImage(orientedCIImage, from: orientedCIImage.extent) {
+-//                image = UIImage(cgImage: cgImage)
+-//            }
+-//            let imageView = UIImageView(image: image)
+-//            imageView.contentMode = .scaleAspectFill
+-//            imageView.frame = videoPreview.frame
+-//            let imageLayer = imageView.layer
+-//            videoPreview.layer.insertSublayer(imageLayer, above: videoCapture.previewLayer)
+-//
+-//            let bounds = UIScreen.main.bounds
+-//            UIGraphicsBeginImageContextWithOptions(bounds.size, true, 0.0)
+-//            self.View0.drawHierarchy(in: bounds, afterScreenUpdates: true)
+-//            let img = UIGraphicsGetImageFromCurrentImageContext()
+-//            UIGraphicsEndImageContext()
+-//            imageLayer.removeFromSuperlayer()
+-//            let activityViewController = UIActivityViewController(activityItems: [img!], applicationActivities: nil)
+-//            activityViewController.popoverPresentationController?.sourceView = self.View0
+-//            self.present(activityViewController, animated: true, completion: nil)
+-//        } else {
+-//            print("AVCapturePhotoCaptureDelegate Error")
+-//        }
+-//    }
+-//}
